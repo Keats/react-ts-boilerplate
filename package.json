@@ -6,7 +6,7 @@
     "build": "gulp build",
     "dev": "gulp dev",
     "lint": "gulp ts-lint",
-    "test": "gulp test:single"
+    "test": "karma start"
   },
   "repository": {
     "type": "git",
@@ -29,8 +29,8 @@
     "gulp-util": "^3.0.5",
     "karma": "^0.12.36",
     "karma-chai": "^0.1.0",
+    "karma-firefox-launcher": "^0.1.6",
     "karma-mocha": "^0.1.10",
-    "karma-phantomjs-launcher": "^0.2.0",
     "karma-webpack": "^1.5.1",
     "mocha": "^2.2.5",
     "node-libs-browser": "^0.5.2",

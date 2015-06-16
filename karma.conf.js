@@ -3,18 +3,21 @@ var path = require('path');
 module.exports = function (config) {
 
     config.set({
-        singleRun: true,
+        basePath: 'src',
         frameworks: ['mocha', 'chai'],
         reporters: ['dots'],
-        browsers: ['PhantomJS'],
+        singleRun: true,
+        colors: true,
+        logLevel: config.LOG_INFO,
+        browsers: ['Firefox'],
         files: [
-            'src/tests/index.js'
+            'tests/index.js'
         ],
+        autoWatch: true,
         preprocessors: {
-            'src/tests/index.js': ['webpack']
+            'tests/index.js': ['webpack']
         },
         webpack: {
-            noInfo: true,
             module: {
                 loaders: [
                     {
@@ -25,11 +28,8 @@ module.exports = function (config) {
             }
         },
         webpackMiddleware: {
-            noInfo: true,
             stats: {
-                color: true,
-                chunkModules: false,
-                modules: false
+                color: true
             }
         }
     });
