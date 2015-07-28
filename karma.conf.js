@@ -1,27 +1,27 @@
 var path = require('path');
 
 module.exports = function (config) {
-
     config.set({
         basePath: 'src',
+        singleRun: true,
         frameworks: ['mocha', 'chai'],
         reporters: ['dots'],
-        singleRun: true,
-        colors: true,
-        logLevel: config.LOG_INFO,
         browsers: ['Firefox'],
         files: [
             'tests/index.js'
         ],
-        autoWatch: true,
         preprocessors: {
             'tests/index.js': ['webpack']
         },
         webpack: {
+            resolve: {
+                extensions: ['', '.js', '.ts']
+            },
             module: {
                 loaders: [
                     {
                         test: /\.ts$/,
+                        exclude: 'node_modules',
                         loaders: ['awesome-typescript-loader']
                     }
                 ]
@@ -29,7 +29,9 @@ module.exports = function (config) {
         },
         webpackMiddleware: {
             stats: {
-                color: true
+                color: true,
+                chunkModules: false,
+                modules: false
             }
         }
     });

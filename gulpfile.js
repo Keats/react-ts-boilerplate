@@ -68,7 +68,10 @@ gulp.task('webpack:server', function() {
   devServer = new webpackDevServer(devCompiler, {
     contentBase: outputFolder,
     hot: true,
-    watchDelay: 100,
+    watchOptions: {
+        aggregateTimeout: 300,
+        poll: true
+    },
     stats: {
       colors: true,
       exclude: ['node_modules']
@@ -83,12 +86,6 @@ gulp.task('webpack:server', function() {
   });
 });
 
-gulp.task("test:single", function(cb) {
-  karma.start({
-    configFile: __dirname + '/karma.conf.js',
-    singleRun: true
-  }, cb);
-});
 
 gulp.task("test:watch", function(cb) {
   karma.start({
