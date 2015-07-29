@@ -13,7 +13,7 @@ export function addCard(state: D.CardsState, payload: any): D.CardsState {
         id,
         name
     };
-    console.log(newState);
+
     return newState;
 }
 

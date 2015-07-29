@@ -2,20 +2,6 @@ import { CREATE_CARD, REMOVE_CARD } from "../constants/actionTypes";
 import { addCardToBoard } from "./boards";
 
 
-function fakePromise(data: Object) {
-    return () => {
-        setTimeout(() => {
-            // Faking failed request
-            const failed = Math.floor(Math.random()) === 0.1;
-            if (failed) {
-
-            } else {
-
-            }
-        }, 100);
-    };
-}
-
 function addCardOptimistic(data: Object) {
     return {
         type: CREATE_CARD,

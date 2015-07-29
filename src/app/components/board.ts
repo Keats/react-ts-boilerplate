@@ -10,7 +10,7 @@ import * as D from "../definitions";
 
 interface BoardProps {
     board: D.Board;
-    cards?: any;  // TODO: do the filtering at connect or boardapp level?
+    cards?: any;
     dispatch?: Function;
 }
 

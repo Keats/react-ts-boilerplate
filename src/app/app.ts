@@ -8,9 +8,12 @@ import BoardApp from "./components/boardApp";
 import * as reducers from "./reducers/index";
 
 
-const reducer = combineReducers(reducers);
+// TODO: need the any cast otherwise i get
+// Index signature is missing in type 'typeof "react-boilerplate/src/app/reducers/index"'.
+const reducer = combineReducers(<any> reducers);
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 const store = createStoreWithMiddleware(reducer);
+
 
 @provide(store)
 class App extends React.Component<any, any> {

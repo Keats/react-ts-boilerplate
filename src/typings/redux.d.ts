@@ -1,45 +1,49 @@
 
-declare module "redux" {
-    interface ActionCreator {
-        (...args: Array<any>): Object;
-    }
+declare module Redux {
 
-    interface ActionCreators {
-        [key: string]: ActionCreator
-    }
+  interface ActionCreator extends Function {
+    (...args: any[]): any;
+  }
 
-    interface Reducer {
-        (state: any, action: Object): any;
-    }
+  interface ActionCreators {
+    [key: string]: ActionCreator
+  }
 
-    interface StoreMethods {
-        dispatch(action: Object): Object;
-        getState(): Object;
-    }
+  interface Reducer extends Function {
+    (state: any, action: any): any;
+  }
 
-    class Store {
-        getReducer(): Function;
-        replaceReducer(nextReducer: Reducer): void;
-        dispatch(action: Object): Object;
-        getState(): Object;
-        subscribe(listener: Function): Function;
-    }
+  interface Dispatch extends Function {
+    (action: any): any;
+  }
 
-    function createStore(
-        reducer: Reducer | Object,
-        initialState?: any
-    ): Store;
+  interface MiddlewareArg {
+    dispatch: Dispatch;
+    getState: Function;
+  }
 
-    function bindActionCreators<T>(
-        actionCreators: ActionCreator | ActionCreators,
-        dispatch: Function
-    ): T;
+  interface Middleware extends Function {
+    (obj: MiddlewareArg): Function;
+  }
 
-    function composeMiddleware(...middlewares: Array<Function>): Function;
-    function combineReducers(reducers: Object): Reducer;
-    function applyMiddleware(...middlewares: Array<Function>): Function;
+  class Store {
+    getReducer(): Reducer;
+    replaceReducer(nextReducer: Reducer): void;
+    dispatch(action: any): any;
+    getState(): any;
+    subscribe(listener: Function): Function;
+  }
 
+  function createStore(reducer: Reducer, initialState?: any): Store;
+  function bindActionCreators<T>(actionCreators: ActionCreator | ActionCreators, dispatch: Dispatch): T;
+  function combineReducers(reducers: {[key: string]: Reducer}): Reducer;
+  function applyMiddleware(...middleware: Middleware[]): Function;
 }
+
+declare module "redux" {
+  export = Redux;
+}
+
 
 declare module "react-redux" {
     import React = require("react");

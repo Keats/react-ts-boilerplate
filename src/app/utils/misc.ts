@@ -15,7 +15,7 @@ export function getIntersection<T>(data: {[key: string]:  T}, ids: Array<number>
 
 
 // redux-thunk function because exporting a single function
-// is not supported
+// is not well supported and it's like 5 LOC
 export function thunk(data: any) {
     let {dispatch, getState} = data;
     return (next: any) => (action: any) =>
