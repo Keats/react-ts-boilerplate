@@ -13,7 +13,8 @@ export function addCard(state: D.CardsState, payload: any): D.CardsState {
     newState[id] = {
         id,
         name,
-        boardId
+        boardId,
+        position: Object.keys(newState).length + 1
     };
 
     return newState;
