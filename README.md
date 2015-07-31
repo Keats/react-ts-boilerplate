@@ -1,5 +1,8 @@
 # react-boilerplate
-TODO
+[![Build Status](https://travis-ci.org/Keats/react-boilerplate.svg?branch=master)](https://travis-ci.org/Keats/react-boilerplate)
+[![Dependency Status](https://david-dm.org/Keats/react-boilerplate.svg)](https://david-dm.org/Keats/react-boilerplate)
+
+TODO:
 
 - remove lodash dependency
 - upgrade to redux 1.0 and react-redux 1.0 when out
