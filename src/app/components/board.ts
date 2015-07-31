@@ -5,7 +5,6 @@ import { addCard } from "../actions/cards";
 import { connect } from "react-redux";
 
 import Card from "./card";
-import { getIntersection } from "../utils/misc";
 import * as D from "../definitions";
 
 
@@ -50,11 +49,11 @@ export class BoardComponent extends React.Component<BoardProps, any> {
 
         // TODO: fix typing
         const cards: Array<any> = _.sortBy(_.filter(
-            this.props.cards, {'boardId': this.props.board.id}
+            this.props.cards, {"boardId": this.props.board.id}
         ), "position");
 
         return cards.map((card) => {
-           return Card({card: card, dispatch: this.props.dispatch})
+           return Card({card: card, dispatch: this.props.dispatch});
         });
     }
 }

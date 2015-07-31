@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var $ = require("gulp-load-plugins")();
 var del = require('del');
-var karma = require('karma').server;
+var KarmaServer = require('karma').Server;
 
 // webpack stuff
 var webpack = require('webpack');
@@ -88,14 +88,15 @@ gulp.task('webpack:server', function() {
 
 
 gulp.task("test:watch", function(cb) {
-  karma.start({
+  new KarmaServer({
     configFile: __dirname + '/karma.conf.js',
     singleRun: false
-  }, cb);
+  }, cb).start();
 });
 
+
 gulp.task("watch", function() {
-  //gulp.watch(sources.scripts, gulp.parallel("ts-lint"));
+  gulp.watch(sources.scripts, gulp.parallel("ts-lint"));
   gulp.watch(sources.sass, gulp.parallel("sass"));
   gulp.watch(sources.index, gulp.parallel("index"));
 });
@@ -103,7 +104,7 @@ gulp.task("watch", function() {
 
 gulp.task(
   "dev",
-  gulp.series("clean", "sass", "index", gulp.parallel("webpack:server", "watch"))
+  gulp.series("clean", "sass", "index", gulp.parallel("test:watch", "webpack:server", "watch"))
 );
 
 gulp.task(
