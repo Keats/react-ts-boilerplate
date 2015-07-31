@@ -7,6 +7,7 @@
 export interface Card {
     id: number;
     name: string;
+    boardId?: number;  // not in the model, added when adding a card
 }
 
 export interface Board {

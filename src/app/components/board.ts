@@ -1,3 +1,4 @@
+import * as _ from "lodash";
 import * as React from "react";
 let { div, button, h2, input, br } = React.DOM;
 import { addCard } from "../actions/cards";
@@ -43,7 +44,14 @@ export class BoardComponent extends React.Component<BoardProps, any> {
     }
 
     renderCards(): Array<React.ReactElement<any>> {
-        const cards = getIntersection<D.Card>(this.props.cards, this.props.board.cards);
+        if (Object.keys(this.props.cards).length === 0) {
+            return null;
+        }
+
+        // TODO: fix typing
+        const cards: Array<any> = _.filter(
+            this.props.cards, {'boardId': this.props.board.id}
+        );
 
         return cards.map((card) => {
            return Card({card: card, dispatch: this.props.dispatch})

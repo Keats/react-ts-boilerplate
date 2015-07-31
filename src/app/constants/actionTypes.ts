@@ -1,4 +1,2 @@
 export const CREATE_CARD = "CREATE_CARD";
 export const REMOVE_CARD = "REMOVE_CARD";
-export const ADD_CARD_TO_BOARD = "ADD_CARD_TO_BOARD";
-export const REMOVE_CARD_TO_BOARD = "REMOVE_CARD_TO_BOARD";

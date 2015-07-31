@@ -12,8 +12,7 @@ interface BoardAppProps {
 }
 
 @connect((state: any) => ({
-    boards: state.boards,
-    cards: state.cards
+    boards: state.boards
 }))
 export class BoardAppComponent extends React.Component<BoardAppProps, any> {
     render() {

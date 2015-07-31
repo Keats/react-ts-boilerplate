@@ -3,15 +3,17 @@ import * as _ from "lodash";
 import * as D from "../definitions";
 import { CREATE_CARD, REMOVE_CARD } from "../constants/actionTypes";
 
+
 const initialState: D.CardsState = {};
 
 
 export function addCard(state: D.CardsState, payload: any): D.CardsState {
-    const {name, id} = payload;
+    const {name, id, boardId} = payload;
     let newState = _.cloneDeep(state);
     newState[id] = {
         id,
-        name
+        name,
+        boardId
     };
 
     return newState;
