@@ -3,15 +3,17 @@
 [![Dependency Status](https://david-dm.org/Keats/react-boilerplate.svg)](https://david-dm.org/Keats/react-boilerplate)
 
 TODO:
-
-- add react component testing
 - upgrade to redux 1.0 and react-redux 1.0 when out
-- play with ImmutableJS
-- remove lodash dependency & look at ramda
+- add react component testing
 
-1
+
 ## Install
 For those of us with python3 as python:
 
 npm install --python=/usr/bin/python2
 
+## ImmutableJS
+It doesn't currently play very nice with the way we would use it to have typings.
+If anyone has a good solution to write reducers using immutablejs, let me know.
+We could use it without any typing but then the reducers (and business logic) won't be
+typed which is a pain.
