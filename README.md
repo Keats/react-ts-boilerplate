@@ -4,13 +4,12 @@
 
 TODO:
 
-- remove lodash dependency
-- upgrade to redux 1.0 and react-redux 1.0 when out
 - add react component testing
+- upgrade to redux 1.0 and react-redux 1.0 when out
 - play with ImmutableJS
-- look at ramda
+- remove lodash dependency & look at ramda
 
-
+1
 ## Install
 For those of us with python3 as python:
 

@@ -40,9 +40,8 @@
   },
   "dependencies": {
     "lodash": "^3.10.0",
-    "react": "^0.13.3",
+    "react": "^0.14.0-beta2",
     "react-redux": "^0.2.2",
-    "redux": "^1.0.0-rc",
-    "redux-thunk": "^0.1.0"
+    "redux": "^1.0.0-rc"
   }
 }
