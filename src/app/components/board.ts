@@ -48,9 +48,7 @@ export class BoardComponent extends React.Component<BoardProps, any> {
         }
 
         // TODO: fix typing
-        const cards: Array<any> = _.sortBy(_.filter(
-            this.props.cards, {"boardId": this.props.board.id}
-        ), "position");
+        const cards: Array<D.Card> = this.props.cards[this.props.board.id] || [];
 
         return cards.map((card) => {
            return Card({card: card, dispatch: this.props.dispatch});

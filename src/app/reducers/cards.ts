@@ -10,12 +10,12 @@ const initialState: D.CardsState = {};
 export function addCard(state: D.CardsState, payload: any): D.CardsState {
     const {name, id, boardId} = payload;
     let newState = _.cloneDeep(state);
-    newState[id] = {
+
+    newState[boardId] = newState[boardId] || [];
+    newState[boardId].push({
         id,
-        name,
-        boardId,
-        position: Object.keys(newState).length + 1
-    };
+        name
+    });
 
     return newState;
 }

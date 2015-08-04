@@ -18,8 +18,9 @@ describe("Cards reducer:", () => {
 		}
 		const state = cards(null, addCardAction);
 		expect(Object.keys(state).length).to.equal(1);
-		expect(state[42]).to.not.be.undefined;
-		expect(state[42].name).to.equal("Hello world");
+		expect(state[7]).to.not.be.undefined;
+		expect(state[7].length).to.equal(1);
+		expect(state[7][0].name).to.equal("Hello world");
 		done();
 	});
 });

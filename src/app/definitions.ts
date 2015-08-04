@@ -7,8 +7,6 @@
 export interface Card {
     id: number;
     name: string;
-    position?: number; // Not present in the action, the reducer sets it
-    boardId?: number;  // not in the model, added when adding a card
 }
 
 export interface Board {
@@ -26,4 +24,4 @@ export interface Board {
 
 // STATES
 export type BoardsState = {[key: string]:  Board};
-export type CardsState = {[key: string]:  Card};
+export type CardsState = {[key: string]:  Array<Card>};
