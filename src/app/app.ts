@@ -11,7 +11,8 @@ import * as reducers from "./reducers/index";
 // TODO: need the any cast otherwise i get
 // Index signature is missing in type 'typeof "react-boilerplate/src/app/reducers/index"'.
 const reducer = combineReducers(<any> reducers);
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+const middlewares = [thunk];
+const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 const store = createStoreWithMiddleware(reducer);
 
 
