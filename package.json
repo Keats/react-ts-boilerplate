@@ -41,7 +41,10 @@
   "dependencies": {
     "lodash": "^3.10.0",
     "react": "^0.14.0-beta2",
+    "react-dom": "^0.14.0-beta3",
     "react-redux": "^0.2.2",
-    "redux": "^1.0.0-rc"
+    "react-router": "^1.0.0-beta3",
+    "redux": "^1.0.0-rc",
+    "redux-react-router": "^0.2.1"
   }
 }

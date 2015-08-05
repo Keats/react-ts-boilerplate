@@ -20,20 +20,19 @@ interface BoardProps {
 @connect((state: any) => ({
     cards: state.cards
 }))
-export class BoardComponent extends React.Component<BoardProps, any> {
+class BoardComponent extends React.Component<BoardProps, any> {
     addCard() {
-        let cardInput = React.findDOMNode<HTMLInputElement>(this.refs["cardName"]);
+        // TODO: this is a bit ugly eh
+        let cardInput: HTMLInputElement = <any> this.refs["cardName"];
         const name = cardInput.value;
         this.props.dispatch(addCard(this.props.board.id, name));
         cardInput.value = "";
-
     }
 
     render() {
-        const cards = this.renderCards();
         return div(null,
             h2(null, this.props.board.name),
-            ...cards,
+            ...this.renderCards(),
             br(),
             div(null,
                 input({type: "text", ref: "cardName"}),
@@ -47,9 +46,7 @@ export class BoardComponent extends React.Component<BoardProps, any> {
             return null;
         }
 
-        // TODO: fix typing
         const cards: Array<D.Card> = this.props.cards[this.props.board.id] || [];
-
         return cards.map((card) => {
            return Card({card: card, dispatch: this.props.dispatch});
         });

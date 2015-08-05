@@ -1,30 +1,50 @@
 /// <reference path="../typings/all.d.ts" />
 import * as React from "react";
-import { createStore, combineReducers, applyMiddleware } from "redux";
+let { h1, div } = React.DOM;
+import * as ReactDom from "react-dom";
 import { provide } from "react-redux";
+import BrowserHistory from "react-router/lib/BrowserHistory";
+import { reduxRouteComponent } from "redux-react-router";
 
-import { thunk } from "./utils/misc";
 import BoardApp from "./components/boardApp";
+import About from "./components/about";
+import store from "./store";
 import * as reducers from "./reducers/index";
+import { Router, Route, Link } from "./factories";
 
 
-// TODO: need the any cast otherwise i get
-// Index signature is missing in type 'typeof "react-boilerplate/src/app/reducers/index"'.
-const reducer = combineReducers(<any> reducers);
-const middlewares = [thunk];
-const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
-const store = createStoreWithMiddleware(reducer);
-
-
-@provide(store)
+// The "layout" of the app
 class App extends React.Component<any, any> {
     render() {
-        return BoardApp();
+        return (
+            div(null,
+                h1(null, "Trehi"),
+                Link({to: "/"}, "Home "),
+                Link({to: "/about"}, " About"),
+                this.props.children || BoardApp()
+            )
+        );
     }
 }
 
 
-React.render(
-    React.createElement(App),
+@provide(store)
+class Root extends React.Component<any, any> {
+    render() {
+        const { history, store } = this.props;
+        return (
+            Router({history: new history},
+                Route({component: reduxRouteComponent(store)},
+                    Route({path: "/", component: App},
+                        Route({path: "about", component: About})
+                    )
+                )
+            )
+        );
+    }
+}
+
+ReactDom.render(
+    React.createElement(Root, {history: BrowserHistory, store: store}),
     document.getElementById("container")
 );
