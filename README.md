@@ -2,6 +2,8 @@
 [![Build Status](https://travis-ci.org/Keats/react-boilerplate.svg?branch=master)](https://travis-ci.org/Keats/react-boilerplate)
 [![Dependency Status](https://david-dm.org/Keats/react-boilerplate.svg)](https://david-dm.org/Keats/react-boilerplate)
 
+## NOT MAINTAINED
+
 TODO:
 - boards -> lists
 - add proptypes
